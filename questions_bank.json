@@ -1,0 +1,46 @@
+{
+  "questions": [
+    {
+      "id": "q1",
+      "question": "Explain the process of cell mitosis.",
+      "answer": "Mitosis is the process of cell division where a single cell divides into two identical daughter cells. The stages include prophase, metaphase, anaphase, and telophase.",
+      "keywords": ["mitosis", "**cell division**", "prophase", "metaphase", "anaphase", "telophase", "chromosomes"]
+    },
+    {
+      "id": "q2",
+      "question": "What are the three laws of Newton's motion?",
+      "answer": "Newton's three laws are: 1) Law of Inertia - an object at rest stays at rest unless acted upon, 2) F=ma - force equals mass times acceleration, 3) Action-Reaction - every action has an equal opposite reaction.",
+      "keywords": ["**inertia**", "**f=ma**", "**action-reaction**", "force", "mass", "acceleration"]
+    },
+    {
+      "id": "q3",
+      "question": "Describe the water cycle.",
+      "answer": "The water cycle consists of evaporation (water turning to vapor), condensation (vapor forming clouds), precipitation (rain/snow falling), and collection (water returning to oceans/lakes).",
+      "keywords": ["**evaporation**", "**condensation**", "**precipitation**", "transpiration", "collection", "runoff"]
+    },
+    {
+      "id": "q4",
+      "question": "What is the difference between HTTP and HTTPS?",
+      "answer": "HTTPS is HTTP with SSL/TLS encryption, making it secure. HTTPS uses port 443 while HTTP uses port 80. HTTPS requires a certificate for authentication.",
+      "keywords": ["**secure**", "**ssl/tls**", "encryption", "port 443", "certificate", "http", "https"]
+    },
+    {
+      "id": "q5",
+      "question": "Explain the concept of artificial intelligence.",
+      "answer": "Artificial Intelligence (AI) refers to machines performing tasks that typically require human intelligence, including learning, reasoning, problem-solving, and decision-making.",
+      "keywords": ["**machine learning**", "**neural networks**", "automation", "cognitive", "problem-solving", "algorithms"]
+    },
+    {
+      "id": "q6",
+      "question": "What is photosynthesis?",
+      "answer": "Photosynthesis is the process where plants convert sunlight, carbon dioxide, and water into glucose and oxygen, using chlorophyll.",
+      "keywords": ["**chlorophyll**", "**sunlight**", "**glucose**", "carbon dioxide", "oxygen", "plants"]
+    },
+    {
+      "id": "q7",
+      "question": "Explain the concept of blockchain technology.",
+      "answer": "Blockchain is a decentralized, distributed ledger that records transactions across many computers, making them secure and tamper-resistant.",
+      "keywords": ["**decentralized**", "**distributed ledger**", "**cryptography**", "blocks", "mining", "consensus"]
+    }
+  ]
+}
