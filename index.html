@@ -7,7 +7,248 @@
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
-    <div id="app"></div>
-    <script src="app.js"></script>
+    <div id="app">
+        <!-- Login Screen -->
+        <div id="loginScreen" class="screen">
+            <div class="container">
+                <div class="glass-card">
+                    <div class="logo">
+                        <div class="logo-icon">🎤</div>
+                        <h1>VoiceExam</h1>
+                        <p>AI-Powered Oral Examination Platform</p>
+                    </div>
+
+                    <div class="mode-selector">
+                        <button class="mode-btn active" data-mode="student">📝 Student</button>
+                        <button class="mode-btn" data-mode="doctor">👨‍⚕️ Doctor</button>
+                    </div>
+
+                    <div id="studentForm" class="form-group">
+                        <input type="text" id="studentName" placeholder="Full Name" class="input-field">
+                        <input type="text" id="courseName" placeholder="Course Name" class="input-field">
+                    </div>
+
+                    <div id="errorMsg" style="color:#ff6b6b;font-size:13px;margin-bottom:10px;display:none;"></div>
+
+                    <button id="startBtn" class="btn-primary">Start Exam →</button>
+                </div>
+            </div>
+        </div>
+
+        <!-- Exam Screen -->
+        <div id="examScreen" class="screen hidden">
+            <div class="container">
+                <div class="exam-header">
+                    <div class="student-info" id="examStudentInfo">
+                        <strong id="studentNameDisplay"></strong> |
+                        <span id="courseNameDisplay"></span>
+                    </div>
+                </div>
+
+                <div class="glass-card exam-card">
+                    <div class="timer-section">
+                        <div class="timer-display">
+                            <span class="timer-icon">⏱️</span>
+                            <span id="timer">3:00</span>
+                        </div>
+                        <div class="timer-bar">
+                            <div id="timerProgress" class="timer-progress"></div>
+                        </div>
+                    </div>
+
+                    <div class="question-section">
+                        <h2 id="questionText"></h2>
+                    </div>
+
+                    <div class="transcript-section">
+                        <div class="transcript-label">Your Answer:</div>
+                        <div id="liveTranscript" class="live-transcript">
+                            <span style="color: #888;">Click the microphone and start speaking...</span>
+                        </div>
+                    </div>
+
+                    <div class="action-buttons">
+                        <button id="micButton" class="btn-mic">🎙️ Start Recording</button>
+                        <button id="submitBtn" class="btn-submit">✓ Submit Answer</button>
+                        <button id="swapBtn" class="btn-swap">🔄 Change Question (−1 pt penalty)</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        
+        <!-- Final Summary Screen -->
+        <div id="summaryScreen" class="screen hidden">
+            <div class="container">
+                <div class="glass-card summary-card">
+                    <div class="summary-header">
+                        <div class="final-grade-circle">
+                            <span id="gradeLetter" class="grade-letter">A</span>
+                            <span id="gradePercent" class="grade-percent">0%</span>
+                        </div>
+                        <h1>Exam Complete!</h1>
+                        <p id="summaryStudentInfo" style="color:#aaa;margin-top:6px;"></p>
+                    </div>
+
+                    <div class="score-summary" id="scoreSummary">
+                        <!-- Dynamic content -->
+                    </div>
+
+                    <div class="summary-actions">
+                        <button id="newExamBtn" class="btn-primary">🔄 New Exam</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Admin Login Screen -->
+        <div id="adminLoginScreen" class="screen hidden">
+            <div class="container">
+                <div class="glass-card">
+                    <div class="logo">
+                        <div class="logo-icon"></div>
+                        <h1>Doctor Panel</h1>
+                        <p>Administrator Access</p>
+                    </div>
+
+                    <div class="form-group">
+                        <input type="text" id="adminName" placeholder="Doctor Name" class="input-field">
+                        <input type="password" id="adminPassword" placeholder="Admin Password" class="input-field">
+                    </div>
+
+                    <div id="adminError" style="color:#ff6b6b;font-size:13px;margin-bottom:10px;display:none;"></div>
+
+                    <button id="adminLoginBtn" class="btn-primary">Access Panel →</button>
+                    <br><br>
+                    <button id="backBtn" class="btn-secondary">← Back to Student Login</button>
+                </div>
+            </div>
+        </div>
+
+        <!-- Admin Dashboard Screen -->
+        <div id="adminDashboardScreen" class="screen hidden">
+            <div class="container">
+                <div class="glass-card admin-dashboard">
+                    <div class="admin-header">
+                        <div>
+                            <h1>👨‍⚕️ Doctor Dashboard</h1>
+                            <p id="adminWelcome">Welcome,</p>
+                        </div>
+                        <button id="logoutBtn" class="btn-small">Logout</button>
+                    </div>
+
+                    <div class="admin-tabs">
+                        <button class="tab-btn active" data-tab="questions">📋 Question Bank</button>
+                        <button class="tab-btn" data-tab="results">📊 Student Results</button>
+                    </div>
+
+                    <!-- Questions Tab -->
+                    <div id="questionsTab" class="tab-content">
+                        <div class="section-header">
+                            <h3>Manage Questions</h3>
+                            <p style="color:#888; font-size:13px;">Upload or download question banks, add/edit individual questions</p>
+                        </div>
+                        
+                        <div class="file-actions">
+                            <div class="action-group">
+                                <h4>📁 Upload Questions</h4>
+                                <button id="importJsonBtn" class="btn-upload">📂 Choose JSON File</button>
+                                <span id="uploadStatus" style="font-size:12px; color:#888;"></span>
+                            </div>
+                            
+                            <div class="action-group">
+                                <h4>📤 Download Questions</h4>
+                                <button id="exportJsonBtn" class="btn-download">⬇️ Export as JSON</button>
+                            </div>
+                        </div>
+
+                        <div class="divider"></div>
+
+                        <div class="question-actions">
+                            <button id="addQuestionBtn" class="btn-secondary">+ Add New Question</button>
+                        </div>
+
+                        <div id="questionsList" class="questions-list">
+                            <!-- Dynamic content -->
+                        </div>
+                    </div>
+
+                    <!-- Results Tab -->
+                    <div id="resultsTab" class="tab-content hidden">
+                        <div class="section-header">
+                            <h3>Student Grades & Results</h3>
+                            <p style="color:#888; font-size:13px;">Download all student results as CSV files</p>
+                        </div>
+                        
+                        <div class="file-actions">
+                            <div class="action-group">
+                                <h4>📥 Download Grades</h4>
+                                <button id="exportAllCsvBtn" class="btn-download">⬇️ Export All Results (CSV)</button>
+                            </div>
+                            
+                            <div class="action-group">
+                                <h4>📊 Detailed Report</h4>
+                                <button id="exportDetailedBtn" class="btn-download">⬇️ Export Detailed (per question)</button>
+                            </div>
+                        </div>
+
+                        <div class="divider"></div>
+
+                        <div class="results-table-container">
+                            <table class="results-table">
+                                <thead>
+                                    <tr>
+                                        <th>Date</th>
+                                        <th>Student</th>
+                                        <th>Course</th>
+                                        <th>Score</th>
+                                        <th>Grade</th>
+                                        <th>Swap</th>
+                                    </tr>
+                                </thead>
+                                <tbody id="resultsTableBody">
+                                    <!-- Dynamic content -->
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Modal for Add/Edit Question -->
+    <div id="modal" class="modal hidden">
+        <div class="modal-content">
+            <h3 id="modalTitle">Add New Question</h3>
+            <input type="text" id="newQuestionText" placeholder="Question text" class="input-field" style="margin-bottom:10px">
+            <textarea id="newModelAnswer" placeholder="Model answer" class="input-field" rows="3" style="margin-bottom:10px"></textarea>
+            <input type="text" id="newKeywords" placeholder="Keywords: word1, **important**, word3" class="input-field">
+            <p style="font-size:12px;color:#888;margin:6px 0 14px;">💡 Wrap important keywords in ** ... ** for double weight (e.g., **mitosis**)</p>
+            <div class="modal-actions">
+                <button id="saveQuestionBtn" class="btn-primary">Save</button>
+                <button id="cancelModalBtn" class="btn-secondary">Cancel</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Hidden file input for JSON upload -->
+    <input type="file" id="jsonFileInput" accept=".json" style="display: none;">
+
+    <!-- ============================================ -->
+    <!-- SEPARATED JAVASCRIPT FILES (load in order)   -->
+    <!-- ============================================ -->
+    <script src="js/01-config.js"></script>
+    <script src="js/02-utils.js"></script>
+    <script src="js/03-storage.js"></script>
+    <script src="js/04-scoring.js"></script>
+    <script src="js/05-speech.js"></script>
+    <script src="js/06-timer.js"></script>
+    <script src="js/07-render.js"></script>
+    <script src="js/08-events.js"></script>
+    <script src="js/09-exam.js"></script>
+    <script src="js/10-admin.js"></script>
+    <script src="js/11-crud.js"></script>
+    <script src="js/12-app.js"></script>
 </body>
 </html>
