@@ -66,7 +66,20 @@ function initSpeechRecognition() {
     return recognition;
 }
 
+function showSoundVisualizer() {
+    const visualizer = document.getElementById('soundWaveVisualizer');
+    if (visualizer) visualizer.classList.remove('hidden');
+}
+
+function hideSoundVisualizer() {
+    const visualizer = document.getElementById('soundWaveVisualizer');
+    if (visualizer) visualizer.classList.add('hidden');
+}
+
+// Update the startRecording function
 function startRecording() {
+    if (!examSession) return;
+    
     if (!examSession.recognition) {
         examSession.recognition = initSpeechRecognition();
     }
@@ -74,16 +87,21 @@ function startRecording() {
     if (examSession.recognition && !examSession.isRecording) {
         try {
             examSession.recognition.start();
+            showSoundVisualizer(); // Show visualizer when recording starts
         } catch (error) {
             console.error('Failed to start recognition:', error);
         }
     }
 }
 
+// Update the stopRecording function
 function stopRecording() {
+    if (!examSession) return;
+    
     if (examSession.recognition && examSession.isRecording) {
         examSession.isRecording = false;
         examSession.recognition.stop();
+        hideSoundVisualizer(); // Hide visualizer when recording stops
     }
 }
 

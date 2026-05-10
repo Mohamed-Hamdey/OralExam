@@ -1,4 +1,5 @@
 function attachLoginEvents() {
+    ensureThemeToggle();
     const modeBtns = document.querySelectorAll('.mode-btn');
     const studentForm = document.getElementById('studentForm');
     const startBtn = document.getElementById('startBtn');
@@ -62,6 +63,7 @@ function attachExamEvents() {
 }
 
 function attachAdminEvents() {
+    ensureThemeToggle();
     // Tab switching
     document.querySelectorAll('.tab-btn').forEach(btn => {
         btn.onclick = () => {
@@ -163,18 +165,18 @@ function attachLoginEvents() {
     }
 }
 
-function attachAdminLoginEvents() {
-    console.log('🔗 attachAdminLoginEvents called');
+function attachAdminLoginEvents() {  
+    ensureThemeToggle();  
+    console.log('attachAdminLoginEvents called');
     
     const loginBtn = document.getElementById('adminLoginBtn');
     const backBtn = document.getElementById('backBtn');
-    
+
     if (loginBtn) {
-        // Remove old listeners to prevent duplicates
         const newLoginBtn = loginBtn.cloneNode(true);
         loginBtn.parentNode.replaceChild(newLoginBtn, loginBtn);
         newLoginBtn.onclick = () => {
-            console.log('👨‍⚕️ Doctor login button clicked');
+            console.log('Admin login button clicked');
             handleDoctorLogin();
         };
     }

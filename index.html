@@ -3,24 +3,146 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
-    <title>VoiceExam - AI-Powered Oral Examination Platform</title>
+    <title>Voxera - AI-Powered Oral Examination Platform</title>
     <link rel="stylesheet" href="style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,300;14..32,400;14..32,500;14..32,600;14..32,700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,300;14..32,400;14..32,500;14..32,600;14..32,700&display=swap" rel="stylesheet">
 </head>
 <body>
     <div id="app">
-        <!-- Login Screen -->
-        <div id="loginScreen" class="screen">
+        <!-- Hero Landing Section -->
+        <div id="heroScreen" class="screen">
+            <div class="hero-container">
+                <nav class="hero-nav">
+                    <div class="nav-logo">
+                        <span class="nav-logo-icon">🎤</span>
+                        <span class="nav-logo-text">Voxera</span>
+                    </div>
+                    <div class="nav-links">
+                        <a href="#" class="nav-link" data-nav="features">Features</a>
+                        <a href="#" class="nav-link" data-nav="how-it-works">How It Works</a>
+                        <a href="#" class="nav-link" data-nav="contact">Contact</a>
+                    </div>
+                    <button id="getStartedBtn" class="nav-cta">Get Started →</button>
+                </nav>
+
+                <div class="hero-main">
+                    <div class="hero-content">
+                        <div class="hero-badge">
+                            <span class="badge-icon">✨</span>
+                            <span>AI-Powered Oral Exams</span>
+                        </div>
+                        <h1 class="hero-title">
+                            Transform Your<br>
+                            <span class="hero-gradient">Oral Examinations</span>
+                        </h1>
+                        <p class="hero-description">
+                            VoiceExam revolutionizes traditional face-to-face oral exams with AI-powered 
+                            speech recognition, automatic scoring, and real-time feedback. Available 
+                            instantly in your browser — no installation required.
+                        </p>
+                        <div class="hero-buttons">
+                            <button id="heroStudentBtn" class="hero-btn-primary">
+                                🎓 I'm a Student
+                            </button>
+                            <button id="heroDoctorBtn" class="hero-btn-secondary">
+                                👨‍⚕️ I'm an Instructor
+                            </button>
+                        </div>
+                        <div class="hero-stats">
+                            <div class="stat-item">
+                                <span class="stat-number" id="statStudents">0</span>
+                                <span class="stat-label">Active Students</span>
+                            </div>
+                            <div class="stat-divider"></div>
+                            <div class="stat-item">
+                                <span class="stat-number" id="statExams">0</span>
+                                <span class="stat-label">Exams Taken</span>
+                            </div>
+                            <div class="stat-divider"></div>
+                            <div class="stat-item">
+                                <span class="stat-number" id="statQuestions">0</span>
+                                <span class="stat-label">Questions Available</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="hero-visual">
+                        <div class="hero-card-preview">
+                            <div class="preview-header">
+                                <div class="preview-dots">
+                                    <span></span><span></span><span></span>
+                                </div>
+                                <span>Oral Exam Session</span>
+                            </div>
+                            <div class="preview-question">
+                                <span class="preview-icon">❓</span>
+                                <p>Explain the process of cell mitosis...</p>
+                            </div>
+                            <div class="preview-mic">
+                                <div class="mic-wave">
+                                    <span></span><span></span><span></span><span></span><span></span>
+                                </div>
+                                <span>🎙️ Recording...</span>
+                            </div>
+                            <div class="preview-score">
+                                <span>Score: <strong>8.5/10</strong></span>
+                                <span class="preview-badge">AI Evaluated</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Features Section -->
+        <div id="featuresScreen" class="screen hidden">
+            <div class="features-container">
+                <button class="back-to-hero features-back">← Back</button>
+                <h2 class="features-title">Powerful Features for Modern Education</h2>
+                <div class="features-grid">
+                    <div class="feature-card">
+                        <div class="feature-icon">🎙️</div>
+                        <h3>Speech Recognition</h3>
+                        <p>Real-time speech-to-text using Web Speech API. No expensive AI services required.</p>
+                    </div>
+                    <div class="feature-card">
+                        <div class="feature-icon">🤖</div>
+                        <h3>Automatic Scoring</h3>
+                        <p>Keyword-based scoring with weighted importance. Get instant results after each answer.</p>
+                    </div>
+                    <div class="feature-card">
+                        <div class="feature-icon">⏱️</div>
+                        <h3>Timed Exams</h3>
+                        <p>3-minute countdown per question with visual progress bar. Auto-submit when time expires.</p>
+                    </div>
+                    <div class="feature-card">
+                        <div class="feature-icon">🔄</div>
+                        <h3>Question Swap</h3>
+                        <p>Students can swap one question with a -1 point penalty. Perfect for difficult topics.</p>
+                    </div>
+                    <div class="feature-card">
+                        <div class="feature-icon">📊</div>
+                        <h3>Admin Dashboard</h3>
+                        <p>Full control over question bank, student results, and CSV exports.</p>
+                    </div>
+                    <div class="feature-card">
+                        <div class="feature-icon">💾</div>
+                        <h3>Data Persistence</h3>
+                        <p>All data stored locally. No servers, no subscriptions, complete privacy.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Login Screen (Student) - Modified -->
+        <div id="loginScreen" class="screen hidden">
             <div class="container">
                 <div class="glass-card">
+                    <button class="back-to-hero login-back">← Back to Home</button>
                     <div class="logo">
                         <div class="logo-icon">🎤</div>
-                        <h1>VoiceExam</h1>
-                        <p>AI-Powered Oral Examination Platform</p>
-                    </div>
-
-                    <div class="mode-selector">
-                        <button class="mode-btn active" data-mode="student">📝 Student</button>
-                        <button class="mode-btn" data-mode="doctor">👨‍⚕️ Doctor</button>
+                        <h1>Student Login</h1>
+                        <p>Enter your details to begin the exam</p>
                     </div>
 
                     <div id="studentForm" class="form-group">
@@ -28,7 +150,7 @@
                         <input type="text" id="courseName" placeholder="Course Name" class="input-field">
                     </div>
 
-                    <div id="errorMsg" style="color:#ff6b6b;font-size:13px;margin-bottom:10px;display:none;"></div>
+                    <div id="errorMsg" style="color:#ef4444;font-size:13px;margin-bottom:10px;display:none;"></div>
 
                     <button id="startBtn" class="btn-primary">Start Exam →</button>
                 </div>
@@ -64,6 +186,22 @@
                         <div class="transcript-label">Your Answer:</div>
                         <div id="liveTranscript" class="live-transcript">
                             <span style="color: #888;">Click the microphone and start speaking...</span>
+                        </div>
+                        <!-- Sound Wave Visualizer - Add this below the microphone button -->
+                        <div id="soundWaveVisualizer" class="sound-wave-visualizer hidden">
+                            <div class="wave-bars">
+                                <div class="wave-bar"></div>
+                                <div class="wave-bar"></div>
+                                <div class="wave-bar"></div>
+                                <div class="wave-bar"></div>
+                                <div class="wave-bar"></div>
+                                <div class="wave-bar"></div>
+                                <div class="wave-bar"></div>
+                                <div class="wave-bar"></div>
+                                <div class="wave-bar"></div>
+                                <div class="wave-bar"></div>
+                            </div>
+                            <span class="wave-text">Recording in progress...</span>
                         </div>
                     </div>
 
@@ -105,8 +243,9 @@
         <div id="adminLoginScreen" class="screen hidden">
             <div class="container">
                 <div class="glass-card">
+                    <button class="back-to-hero admin-back">← Back to Home</button>
                     <div class="logo">
-                        <div class="logo-icon"></div>
+                        <div class="logo-icon">👨‍⚕️</div>
                         <h1>Doctor Panel</h1>
                         <p>Administrator Access</p>
                     </div>
@@ -116,14 +255,14 @@
                         <input type="password" id="adminPassword" placeholder="Admin Password" class="input-field">
                     </div>
 
-                    <div id="adminError" style="color:#ff6b6b;font-size:13px;margin-bottom:10px;display:none;"></div>
+                    <div id="adminError" style="color:#ef4444;font-size:13px;margin-bottom:10px;display:none;"></div>
 
                     <button id="adminLoginBtn" class="btn-primary">Access Panel →</button>
                     <br><br>
-                    <button id="backBtn" class="btn-secondary">← Back to Student Login</button>
                 </div>
             </div>
         </div>
+
 
         <!-- Admin Dashboard Screen -->
         <div id="adminDashboardScreen" class="screen hidden">
@@ -249,6 +388,8 @@
     <script src="js/09-exam.js"></script>
     <script src="js/10-admin.js"></script>
     <script src="js/11-crud.js"></script>
+    <script src="js/13-hero.js"></script>
     <script src="js/12-app.js"></script>
+    
 </body>
 </html>
