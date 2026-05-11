@@ -89,7 +89,10 @@ function attachAdminEvents() {
     // ── DOCTOR FEATURE 1: Upload JSON question file ──
     const importBtn = document.getElementById('importJsonBtn');
     if (importBtn) importBtn.onclick = () => importQuestionsFile();
- 
+
+    // Export as PDF directly
+    const exportPdfBtn = document.getElementById('exportPdfBtn');
+    if (exportPdfBtn) exportPdfBtn.onclick = () => exportAsPDF();
     // ── DOCTOR FEATURE 2: Download grades CSV ──
     const exportGradesBtn = document.getElementById('exportAllCsvBtn');
     if (exportGradesBtn) exportGradesBtn.onclick = () => exportGradesFile();

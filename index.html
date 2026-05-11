@@ -7,6 +7,9 @@
     <link rel="stylesheet" href="style.css">
     <link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,300;14..32,400;14..32,500;14..32,600;14..32,700&display=swap" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,300;14..32,400;14..32,500;14..32,600;14..32,700&display=swap" rel="stylesheet">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.10.1/html2pdf.bundle.min.js" integrity="sha512-GsLlZN/3F2ErC5ifS5QtgpiJtWd43JWSuIgh7mbzZ8zBps+dvLusV+eNQATqgA/HdeKFVgA5v3S/cIrLF7QnIg==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
 </head>
 <body>
     <div id="app">
@@ -133,6 +136,73 @@
                 </div>
             </div>
         </div>
+                <!-- How It Works Page -->
+        <div id="howItWorksScreen" class="screen hidden">
+            <div class="features-container">
+                <button class="back-to-hero howitworks-back">← Back</button>
+                <h2 class="features-title">How VoiceExam Works</h2>
+                <div class="steps-container">
+                    <div class="step-card">
+                        <div class="step-number">1</div>
+                        <div class="step-icon">📝</div>
+                        <h3>Login</h3>
+                        <p>Enter your name and course to start the exam</p>
+                    </div>
+                    <div class="step-arrow">→</div>
+                    <div class="step-card">
+                        <div class="step-number">2</div>
+                        <div class="step-icon">🎤</div>
+                        <h3>Speak</h3>
+                        <p>Answer the question verbally using your microphone</p>
+                    </div>
+                    <div class="step-arrow">→</div>
+                    <div class="step-card">
+                        <div class="step-number">3</div>
+                        <div class="step-icon">🤖</div>
+                        <h3>AI Scoring</h3>
+                        <p>Our AI analyzes your answer and scores it instantly</p>
+                    </div>
+                    <div class="step-arrow">→</div>
+                    <div class="step-card">
+                        <div class="step-number">4</div>
+                        <div class="step-icon">📊</div>
+                        <h3>Results</h3>
+                        <p>View your score, grade, and detailed feedback</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+                <!-- Contact / Thank You Page -->
+        <div id="contactScreen" class="screen hidden">
+            <div class="features-container">
+                <button class="back-to-hero contact-back">← Back</button>
+                <div class="thankyou-card">
+                    <div class="thankyou-icon">🙏</div>
+                    <h2 class="thankyou-title">A Special Thank You</h2>
+                    <div class="thankyou-message">
+                        <p>Dear <strong>Dr. Mina Younan</strong>,</p>
+                        <br>
+                        <p>Thank you for being an incredible mentor and guide throughout my 
+                           entire 4-year bachelor's degree journey. Your wisdom, patience, 
+                           and dedication have shaped me into the professional I am today.</p>
+                        <br>
+                        <p>This project, VoiceExam, is a small token of my gratitude for 
+                           everything you've taught me. Your passion for education and 
+                           technology inspired me to create something that makes oral 
+                           examinations accessible to everyone.</p>
+                        <br>
+                        <p>Thank you for believing in me.</p>
+                        <br>
+                        <p class="thankyou-signature">With deepest gratitude,<br>
+                        <strong>Your Student</strong></p>
+                    </div>
+                    <div class="thankyou-footer">
+                        <span>🎤 VoiceExam</span>
+                        <span>❤️ Made with dedication</span>
+                    </div>
+                </div>
+            </div>
+        </div>
 
         <!-- Login Screen (Student) - Modified -->
         <div id="loginScreen" class="screen hidden">
@@ -157,37 +227,44 @@
             </div>
         </div>
 
-        <!-- Exam Screen -->
+         <!-- Exam Screen -->
         <div id="examScreen" class="screen hidden">
-            <div class="container">
-                <div class="exam-header">
-                    <div class="student-info" id="examStudentInfo">
-                        <strong id="studentNameDisplay"></strong> |
-                        <span id="courseNameDisplay"></span>
+            <div class="exam-wrapper">
+                <!-- Student Info Badge - Top Left -->
+                <div class="student-info-badge">
+                    <div class="student-avatar">
+                        <span>👨‍🎓</span>
+                    </div>
+                    <div class="student-details">
+                        <span class="student-name" id="studentNameDisplay"></span>
+                        <span class="student-course" id="courseNameDisplay"></span>
                     </div>
                 </div>
 
-                <div class="glass-card exam-card">
-                    <div class="timer-section">
-                        <div class="timer-display">
-                            <span class="timer-icon">⏱️</span>
-                            <span id="timer">3:00</span>
+                <div class="container exam-container">
+                    <div class="glass-card exam-card">
+                        <div class="timer-section">
+                            <div class="timer-display">
+                                <span class="timer-icon">⏱️</span>
+                                <span id="timer">3:00</span>
+                            </div>
+                            <div class="timer-bar">
+                                <div id="timerProgress" class="timer-progress"></div>
+                            </div>
                         </div>
-                        <div class="timer-bar">
-                            <div id="timerProgress" class="timer-progress"></div>
-                        </div>
-                    </div>
 
-                    <div class="question-section">
-                        <h2 id="questionText"></h2>
-                    </div>
-
-                    <div class="transcript-section">
-                        <div class="transcript-label">Your Answer:</div>
-                        <div id="liveTranscript" class="live-transcript">
-                            <span style="color: #888;">Click the microphone and start speaking...</span>
+                        <div class="question-section">
+                            <h2 id="questionText"></h2>
                         </div>
-                        <!-- Sound Wave Visualizer - Add this below the microphone button -->
+
+                        <div class="transcript-section">
+                            <div class="transcript-label">Your Answer:</div>
+                            <div id="liveTranscript" class="live-transcript">
+                                <span style="color: #888;">Click the microphone and start speaking...</span>
+                            </div>
+                        </div>
+
+                        <!-- Sound Wave Visualizer -->
                         <div id="soundWaveVisualizer" class="sound-wave-visualizer hidden">
                             <div class="wave-bars">
                                 <div class="wave-bar"></div>
@@ -203,12 +280,12 @@
                             </div>
                             <span class="wave-text">Recording in progress...</span>
                         </div>
-                    </div>
 
-                    <div class="action-buttons">
-                        <button id="micButton" class="btn-mic">🎙️ Start Recording</button>
-                        <button id="submitBtn" class="btn-submit">✓ Submit Answer</button>
-                        <button id="swapBtn" class="btn-swap">🔄 Change Question (−1 pt penalty)</button>
+                        <div class="action-buttons">
+                            <button id="micButton" class="btn-mic">🎙️ Start Recording</button>
+                            <button id="submitBtn" class="btn-submit">✓ Submit Answer</button>
+                            <button id="swapBtn" class="btn-swap">🔄 Change Question (−1 pt penalty)</button>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -325,10 +402,10 @@
                                 <button id="exportAllCsvBtn" class="btn-download">⬇️ Export All Results (CSV)</button>
                             </div>
                             
-                            <div class="action-group">
-                                <h4>📊 Detailed Report</h4>
-                                <button id="exportDetailedBtn" class="btn-download">⬇️ Export Detailed (per question)</button>
-                            </div>
+                        <div class="action-group">
+                            <h4>📊 Professional Report</h4>
+                            <button id="exportPdfBtn" class="btn-download">📑 Download as PDF</button>
+                        </div>
                         </div>
 
                         <div class="divider"></div>

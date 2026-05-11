@@ -127,6 +127,98 @@ function initHeroPage() {
     ensureThemeToggle();
 }
 
+// Navigate to How It Works
+function showHowItWorksScreen() {
+    console.log('Showing how it works screen');
+    showScreen('howItWorksScreen');
+    ensureThemeToggle();
+}
+
+// Navigate to Contact/Thank You page
+function showContactScreen() {
+    console.log('Showing contact screen');
+    showScreen('contactScreen');
+    ensureThemeToggle();
+}
+
+// Get Started functionality - scroll to features
+function handleGetStarted() {
+    console.log('Get Started clicked - scrolling to features');
+    showFeaturesScreen();
+}
+
+// Update attachHeroEvents function
+function attachHeroEvents() {
+    console.log('Attaching hero events...');
+    
+    ensureThemeToggle();
+    
+    // Get Started button - now shows features page
+    const getStartedBtn = document.getElementById('getStartedBtn');
+    if (getStartedBtn) {
+        getStartedBtn.onclick = () => {
+            console.log('Get Started clicked');
+            showFeaturesScreen();
+        };
+    }
+    
+    // Student button
+    const heroStudentBtn = document.getElementById('heroStudentBtn');
+    if (heroStudentBtn) {
+        heroStudentBtn.onclick = () => {
+            console.log('Student button clicked');
+            showStudentLogin();
+        };
+    }
+    
+    // Doctor button
+    const heroDoctorBtn = document.getElementById('heroDoctorBtn');
+    if (heroDoctorBtn) {
+        heroDoctorBtn.onclick = () => {
+            console.log('Doctor button clicked');
+            showDoctorLogin();
+        };
+    }
+    
+    // Features link
+    const featuresLink = document.querySelector('[data-nav="features"]');
+    if (featuresLink) {
+        featuresLink.onclick = (e) => {
+            e.preventDefault();
+            console.log('Features link clicked');
+            showFeaturesScreen();
+        };
+    }
+    
+    // How It Works link
+    const howItWorksLink = document.querySelector('[data-nav="how-it-works"]');
+    if (howItWorksLink) {
+        howItWorksLink.onclick = (e) => {
+            e.preventDefault();
+            console.log('How it works link clicked');
+            showHowItWorksScreen();
+        };
+    }
+    
+    // Contact link
+    const contactLink = document.querySelector('[data-nav="contact"]');
+    if (contactLink) {
+        contactLink.onclick = (e) => {
+            e.preventDefault();
+            console.log('Contact link clicked');
+            showContactScreen();
+        };
+    }
+    
+    // Back buttons
+    const backButtons = document.querySelectorAll('.back-to-hero');
+    backButtons.forEach(btn => {
+        btn.onclick = goBackToHero;
+    });
+    
+    console.log('Hero events attached successfully');
+}
+
 // Make functions global
 window.initHeroPage = initHeroPage;
 window.attachHeroEvents = attachHeroEvents;

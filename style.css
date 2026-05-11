@@ -2286,3 +2286,313 @@ details summary {
 .btn-swap {
     background: var(--btn-swap-bg) !important;
 }
+
+/* ============================================ */
+/* EXAM PAGE IMPROVED LAYOUT */
+/* ============================================ */
+
+.exam-wrapper {
+    min-height: 100vh;
+    padding: 24px;
+    position: relative;
+}
+
+/* Student Info Badge - Top Left */
+.student-info-badge {
+    position: fixed;
+    top: 24px;
+    left: 24px;
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    background: var(--card-bg);
+    border: 1px solid var(--border-color);
+    border-radius: 60px;
+    padding: 8px 20px 8px 12px;
+    z-index: 100;
+    box-shadow: var(--card-shadow);
+    transition: all 0.3s ease;
+}
+
+.student-avatar {
+    width: 40px;
+    height: 40px;
+    background: linear-gradient(135deg, var(--primary), var(--secondary));
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 20px;
+}
+
+.student-details {
+    display: flex;
+    flex-direction: column;
+}
+
+.student-name {
+    font-weight: 700;
+    font-size: 14px;
+    color: var(--text-primary);
+}
+
+.student-course {
+    font-size: 12px;
+    color: var(--text-secondary);
+}
+
+/* Exam Container */
+.exam-container {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 100vh;
+    padding: 20px;
+}
+
+.exam-card {
+    max-width: 800px;
+    width: 100%;
+    margin: 0 auto;
+}
+
+/* Responsive for mobile */
+@media (max-width: 768px) {
+    .student-info-badge {
+        top: 16px;
+        left: 16px;
+        padding: 6px 16px 6px 10px;
+    }
+    
+    .student-avatar {
+        width: 32px;
+        height: 32px;
+        font-size: 16px;
+    }
+    
+    .student-name {
+        font-size: 12px;
+    }
+    
+    .student-course {
+        font-size: 10px;
+    }
+    
+    .exam-wrapper {
+        padding: 16px;
+    }
+}
+
+@media (max-width: 480px) {
+    .student-info-badge {
+        top: 12px;
+        left: 12px;
+        padding: 4px 12px 4px 8px;
+    }
+    
+    .student-avatar {
+        width: 28px;
+        height: 28px;
+        font-size: 14px;
+    }
+}
+
+/* How It Works Steps */
+.steps-container {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 20px;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 40px 20px;
+}
+
+.step-card {
+    background: var(--card-bg);
+    border: 1px solid var(--border-color);
+    border-radius: 24px;
+    padding: 32px 24px;
+    text-align: center;
+    width: 220px;
+    transition: all 0.3s ease;
+    position: relative;
+}
+
+.step-card:hover {
+    transform: translateY(-5px);
+    box-shadow: var(--card-shadow);
+    border-color: var(--primary);
+}
+
+.step-number {
+    position: absolute;
+    top: -12px;
+    left: -12px;
+    width: 32px;
+    height: 32px;
+    background: var(--primary);
+    color: white;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: bold;
+    font-size: 14px;
+}
+
+.step-icon {
+    font-size: 48px;
+    margin-bottom: 16px;
+}
+
+.step-card h3 {
+    font-size: 20px;
+    margin-bottom: 12px;
+    color: var(--text-primary);
+}
+
+.step-card p {
+    font-size: 14px;
+    color: var(--text-secondary);
+    line-height: 1.5;
+}
+
+.step-arrow {
+    font-size: 32px;
+    color: var(--primary);
+    font-weight: bold;
+}
+
+/* Thank You Card */
+.thankyou-card {
+    max-width: 700px;
+    margin: 0 auto;
+    background: var(--card-bg);
+    border: 1px solid var(--border-color);
+    border-radius: 32px;
+    padding: 48px;
+    text-align: center;
+    box-shadow: var(--card-shadow);
+}
+
+.thankyou-icon {
+    font-size: 64px;
+    margin-bottom: 24px;
+}
+
+.thankyou-title {
+    font-size: 32px;
+    margin-bottom: 32px;
+    background: linear-gradient(135deg, var(--primary), var(--secondary));
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+}
+
+.thankyou-message {
+    text-align: left;
+    font-size: 16px;
+    line-height: 1.8;
+    color: var(--text-primary);
+    margin-bottom: 32px;
+}
+
+.thankyou-message strong {
+    color: var(--primary);
+}
+
+.thankyou-signature {
+    text-align: right;
+    font-style: italic;
+    margin-top: 20px;
+}
+
+.thankyou-footer {
+    display: flex;
+    justify-content: space-between;
+    padding-top: 24px;
+    border-top: 1px solid var(--border-color);
+    color: var(--text-secondary);
+    font-size: 14px;
+}
+
+/* Responsive */
+@media (max-width: 900px) {
+    .steps-container {
+        flex-direction: column;
+    }
+    
+    .step-arrow {
+        transform: rotate(90deg);
+    }
+    
+    .step-card {
+        width: 280px;
+    }
+    
+    .thankyou-card {
+        padding: 32px 24px;
+        margin: 20px;
+    }
+    
+    .thankyou-title {
+        font-size: 24px;
+    }
+    
+    .thankyou-message {
+        font-size: 14px;
+    }
+}
+
+/* PDF Print Styles */
+@media print {
+    body {
+        background: white !important;
+        padding: 0 !important;
+        margin: 0 !important;
+    }
+    
+    .theme-toggle,
+    button:not(.no-print),
+    .mode-selector,
+    .back-to-hero {
+        display: none !important;
+    }
+    
+    .glass-card,
+    .exam-card,
+    .score-card,
+    .summary-card {
+        box-shadow: none !important;
+        border: 1px solid #ddd !important;
+    }
+    
+    .question-card {
+        break-inside: avoid;
+        page-break-inside: avoid;
+    }
+    
+    table {
+        break-inside: avoid;
+    }
+    
+    .stat-card {
+        break-inside: avoid;
+    }
+}
+
+/* Admin buttons spacing */
+#exportPdfBtn, #exportDetailedBtn {
+    width: 100%;
+    margin-top: 8px;
+}
+
+#exportPdfBtn {
+    background: linear-gradient(135deg, #ef4444, #dc2626) !important;
+}
+
+#exportDetailedBtn {
+    background: linear-gradient(135deg, #3b82f6, #8b5cf6) !important;
+}
